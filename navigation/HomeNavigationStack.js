@@ -4,25 +4,17 @@ import Constants from 'expo-constants';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeComponent from '../components/HomeComponent';
 import MySounds from '../screens/mySounds';
-import HomeNavigation from '../navigation/HomeNavigationStack';
 
 const Stack = createStackNavigator();
 
-const HomeScreen = ({navigation}) => {
+const HomeNavigation = () => {
 
     return (
-        <HomeNavigation />
-
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeComponent} />
+            <Stack.Screen name="My Sounds" component={MySounds} />
+        </Stack.Navigator>
     );
 }
 
-const styles = StyleSheet.create({
-    pageView: {
-        flex: 1,
-        paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-        alignItems: 'center',
-    },
-});
-
-
-export default HomeScreen;
+export default HomeNavigation;
